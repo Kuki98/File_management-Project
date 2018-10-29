@@ -1,0 +1,4 @@
+invalid literal for int() with base 10: 'a'
+invalid literal for int() with base 10: '1 ,2'
+[WinError 2] The system cannot find the file specified: 'D:\\Ivan'
+[WinError 2] The system cannot find the file specified: 'a'
