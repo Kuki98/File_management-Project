@@ -21,8 +21,11 @@ def create_dir(path, name):
     except FileExistsError:
         print('File already exist')
 def delete_dir(path, name):
-    os.rmdir(path)
-    #FROM HERE!!!
+        usr_rm_dir = str(input('Name of folder to delete: '))
+        if(usr_rm_dir == ''):
+            os.rmdir('Empty')
+        else:
+            os.rmdir(usr_rm_dir)
 menu()
 try:
     usr_choice = int(input('Choose one: '))
@@ -41,23 +44,24 @@ except (ValueError, TypeError)  as e:
 if (usr_choice == 1):
     try:
         usr_path = str(input('Enter path for directory: '))
+        if(usr_path == ''):
+            usr_path = os.getcwd() 
         os.chdir(usr_path)
+        
         usr_dir_name = str(input('Enter name for directory: '))
         if(usr_dir_name == ''):
             usr_dir_name = 'Empty'
-        if(usr_path == ''):
-            os.chdir(usr_path)
-            usr_path = os.getcwd()
+        
         create_dir(usr_path, usr_dir_name)
-    except (FileExistsError, FileNotFoundError, WindowsError, OSError) as e:
+
+    except(FileExistsError, FileNotFoundError, OSError) as e:
         f = open('ErrorLog.txt', 'a')
         f.write(str(e))
         f.write('\n')
         f.close()
         print('Error!')
 elif (usr_choice == 2):
-    #foldef del
-    pass
+        create_dir(usr_path, usr_dir_name)
 elif (usr_choice == 3):
     #file make
     pass
@@ -67,3 +71,4 @@ elif (usr_choice == 4):
 elif (usr_choice == 5):
     #change dir
     pass
+
